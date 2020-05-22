@@ -4,6 +4,10 @@ import random
 def get_difficulty():
     pass
 
+#function to validate word length for different difficulty levels
+def validate_word():
+    pass
+
 #function to get filtered word from word.txt
 #add min and max length, the length will decide the word by difficulty 
 def get_filtered_word():
@@ -40,31 +44,42 @@ def display_word(word, guesses):
     letters = [display_letter(letter, guesses) for letter in word]
 
     user_display = " ".join(letters)
+
     return user_display.upper()
 
 #function for getting next guess
 def get_next_guess():
-    pass
+    """
+    Ask the user to guess a letter, and then return that letter uppercase (may need to be lowercase, *check for error*)
+    """
+    guessed_letter = input("Guess a letter: ")
+    return guessed_letter.upper()
 
 #function for calcualting guesses left
-def calc_guesses_left():
+#for loop
+def calc_guesses_remain(word, guesses):
+    """
+    calculate the remaining number of guesses by comparing guess not being in word, then subtracting it from the 8 overall guesses
+    """
     pass
 
 #function for guesses left
-def guesses_left():
+def guesses_remain(word, guesses):
+    """
+    Will take the calculated guesses left so that it can validate if the number of remaining guesses are > 0
+    """
     pass
 
 #function to run game
     #while loop
 def run_game():
     """
-    Combines all functions to run the game.  Produces the random word and takes the guess to see if it is in the word
+    Combines all functions to run the game.  Produces the random word and takes the guess to see if it is in the word, only takes guesses while there are guesses remaining
     """
     word = get_random_word()
-    print(word)
-    
+    guesses = get_next_guess()
+    print(display_word(word, guesses))
 
-
+#runs the game
 if __name__ == "__main__":
     run_game()
-    
