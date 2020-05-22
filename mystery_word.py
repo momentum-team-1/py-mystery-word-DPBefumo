@@ -1,19 +1,26 @@
 import random
 
-def get_random_word():
-    """
-    Opens the file, then puts the words in to strings, to be able to select each word randomly
-    """
-    #can add min and max length to it but it will change to filtered word, not random, since the length will dicide the word
-    opened_file = open("words.txt")
-    lines = opened_file.read()
-    word = lines.split()
-    opened_file.close()
-    return random.choices(word)
-
 #function for setting up difficutly level
 def get_difficulty():
     pass
+
+#function to get filtered word from word.txt
+#add min and max length, the length will decide the word by difficulty 
+def get_filtered_word():
+    """
+    Opens the file, then puts the words in to strings, to be able to select each word randomly
+    """
+    opened_file = open("words.txt")
+    words = opened_file.read().split()
+    opened_file.close()
+    filtered_words = [word for word in words]
+
+    return filtered_words
+
+#funtion to get random word
+#add min and max length, the length will decide the word by difficulty 
+def get_random_word():
+    return random.choice(get_filtered_word())
 
 #function to display letter
 def display_letter(letter, guesses):
@@ -55,6 +62,7 @@ def run_game():
     """
     word = get_random_word()
     print(word)
+    
 
 
 if __name__ == "__main__":
